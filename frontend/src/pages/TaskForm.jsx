@@ -161,7 +161,7 @@ const TaskForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {errors.submit && (
             <div className="bg-destructive/10 text-destructive px-4 py-3 rounded-lg text-sm">
-              {errors.submit}
+              {typeof errors.submit === 'string' ? errors.submit : errors.submit?.message || 'An error occurred'}
             </div>
           )}
 

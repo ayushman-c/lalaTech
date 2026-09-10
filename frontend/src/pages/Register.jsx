@@ -42,7 +42,8 @@ const Register = () => {
       await register(formData.email, formData.password, formData.name, formData.role);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to register');
+      const msg = err.response?.data?.error;
+      setError(typeof msg === 'string' ? msg : msg?.message || 'Failed to register');
     } finally {
       setLoading(false);
     }
@@ -66,7 +67,7 @@ const Register = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
               <div className="bg-destructive/10 text-destructive px-4 py-3 rounded-lg text-sm">
-                {error}
+                {typeof error === 'string' ? error : error?.message || 'An error occurred'}
               </div>
             )}
 

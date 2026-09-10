@@ -21,7 +21,7 @@ const Input = forwardRef(({
         {...props}
       />
       {error && (
-        <p className="mt-1 text-sm text-destructive">{error}</p>
+        <p className="mt-1 text-sm text-destructive">{typeof error === 'string' ? error : error?.message || ''}</p>
       )}
     </div>
   );
